@@ -1,0 +1,11 @@
+endpoints.MapPost("/employees", (Employee employee) =>
+{        
+    if (employee is null || employee.Id <= 0)
+    {                
+        return "Employee is not provided or is not valid.";
+    }
+
+    EmployeesRepository.AddEmployee(employee);
+    return "Employee added successfully.";        
+
+});
