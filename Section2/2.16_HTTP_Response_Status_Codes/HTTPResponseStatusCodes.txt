@@ -1,0 +1,23 @@
+1xx: Informational Responses
+- 100 Continue: The server has received the request headers and the client should proceed to send the request body.
+- 101 Switch Protocols: The requester has asked the server to switch protocols and the server has agreed to do so.
+
+2xx: Successful Responses
+- 200 OK: The request has succeeded.
+- 201 Created: The request has been fulfilled and a new resource has been created.
+- 204 No Content: The server successfully processed the request, but is not returning any content.
+
+3xx: Redirection Messages
+- 301 Moved Permanently: The resournce has been moved to a new URL permanently.
+- 302 Found: The resource is temporarily located at a different URL.
+- 304 Not Modified: The resource has not been modified since the last request. (Tells browser to use cached copy)
+
+4xx: Client Error Responses:
+- 400 Bad Request: The server could not understand the request due to invalid syntax.
+- 401 Unauthorized: Authentication is required and has failed or has not yet been provided.
+- 404 Not Found: The reqeusted resource could not be found on the server.
+
+5xx: Server Error Responses
+- 500 Internal Server Error: The server encountered an unexpected condition that prevented it from fulfilling the request.
+- 502 Bad Gateway: The server received an invalid response from the upstream server.
+- 503 Service Unavailable: The server is not ready to handle the request, often due to maintenance or overload.

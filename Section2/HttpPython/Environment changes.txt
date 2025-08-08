@@ -1,0 +1,24 @@
+# Terminal Environment Changes
+
+## Extension: vscode.git
+
+Enables the following features: git auth provider
+
+Enables the following features: git auth provider (workspace)
+
+- `GIT_ASKPASS=c:\Users\J\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\git\dist\askpass.sh`
+- `VSCODE_GIT_ASKPASS_NODE=C:\Users\J\AppData\Local\Programs\Microsoft VS Code\Code.exe`
+- `VSCODE_GIT_ASKPASS_EXTRA_ARGS=`
+- `VSCODE_GIT_ASKPASS_MAIN=c:\Users\J\AppData\Local\Programs\Microsoft VS Code\resources\app\extensions\git\dist\askpass-main.js`
+- `VSCODE_GIT_IPC_HANDLE=\\.\pipe\vscode-git-de7ccfa393-sock`
+
+## Extension: ms-python.debugpy
+
+Enables use of [no-config debugging](https://github.com/microsoft/vscode-python-debugger/wiki/No%E2%80%90Config-Debugging), `debugpy <script.py>`, in the terminal.
+
+Enables use of [no-config debugging](https://github.com/microsoft/vscode-python-debugger/wiki/No%E2%80%90Config-Debugging), `debugpy <script.py>`, in the terminal. (workspace)
+
+- `PYDEVD_DISABLE_FILE_VALIDATION=1`
+- `VSCODE_DEBUGPY_ADAPTER_ENDPOINTS=c:\Users\J\.vscode\extensions\ms-python.debugpy-2025.10.0-win32-x64\.noConfigDebugAdapterEndpoints\endpoint-6e0369edf7f28746.txt`
+- `PATH=${env:PATH};c:\Users\J\.vscode\extensions\ms-python.debugpy-2025.10.0-win32-x64\bundled\scripts\noConfigScripts`
+- `BUNDLED_DEBUGPY_PATH=c:\Users\J\.vscode\extensions\ms-python.debugpy-2025.10.0-win32-x64\bundled\libs\debugpy`
