@@ -1,0 +1,9 @@
+﻿Number of lines: 3
+"Hello and"
+"Welcome to"
+"MyApp"
+
+Line 0: Hello and   
+Line 1: Welcome to   
+Line 2: MyApp   
+

@@ -1,0 +1,89 @@
+﻿<#@ template hostspecific="true" language="C#" #>
+<#@ output extension=".txt" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#
+  IServiceProvider serviceProvider = (IServiceProvider)this.Host;
+  EnvDTE.DTE dte = (EnvDTE.DTE) serviceProvider.GetCOMService(typeof(EnvDTE.DTE));
+#>
+Error("An error message");
+
+Number of projects in this VS solution:  <#= dte.Solution.Projects.Count #>
+
+<# Warning("A warning message"); #>
+
+<#@ assembly name="$(ProjectDir)bin\Debug\net9.0\MvcResultTypes.dll" #>
+This is readme.txt contents using the include directive.
+<#@ include file="$(SolutionDir)readme.txt" #>
+
+<#
+    for(int i = 0; i < 4; i++)
+    {
+        Write(i + ", ");
+    }
+    Write("4");
+#> Hello!
+
+<#
+    for(int i = 0; i < 4; i++)
+    {
+#>
+Howdy!
+<#
+    }
+#>
+
+<#= 2 + 3 #>
+
+
+<#
+    for(int i = 0; i < 4; i++)
+    {
+#>
+This is hello number <#= i+1 #>: Hello!
+<#
+    }
+#>
+
+<# /*
+Class feature control blocks
+A class feature control block defines properties, methods, or any other code that should not be included in the main transform. 
+Class feature blocks are frequently used for helper functions. Typically, class feature blocks are placed in separate files so 
+that they can be included by more than one text template.
+*/#>
+
+
+Squares:
+<#
+    for(int i = 0; i < 4; i++)
+    {
+#>
+    The square of <#= i #> is <#= Square(i+1) #>.
+<#
+    }
+#>
+That is the end of the list.
+
+List of Squares:
+<#
+   for(int i = 0; i < 4; i++)
+   {  WriteSquareLine(i); }
+#>
+End of list.
+
+<#+   // Start of class feature block
+private int Square(int i)
+{
+    return i*i;
+}
+#>
+
+
+<#+   // Class feature block
+private void WriteSquareLine(int i)
+{
+#>
+   The square of <#= i #> is <#= i*i #>.
+<#+
+}
+#>

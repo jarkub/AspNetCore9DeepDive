@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.3.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\GetDataFromVS.tt">
+      <LastGenOutput>GetDataFromVS.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Update="wwwroot\GetDataFromVS.txt">
+      <DependentUpon>GetDataFromVS.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Content>
+    <Content Update="wwwroot\ImportUsing.txt">
+      <DependentUpon>ImportUsing.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Content>
+    <Content Update="wwwroot\ImportUsing.tt">
+      <LastGenOutput>ImportUsing.txt</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Update="wwwroot\MyGeneratedClass.tt">
+      <LastGenOutput>MyGeneratedClass.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Update="wwwroot\MyGeneratedClass.cs">
+      <DependentUpon>MyGeneratedClass.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Content>
+    <Content Update="wwwroot\TextTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TextTemplate.txt</LastGenOutput>
+    </Content>
+    <Content Update="wwwroot\TextTemplate.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TextTemplate.tt</DependentUpon>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

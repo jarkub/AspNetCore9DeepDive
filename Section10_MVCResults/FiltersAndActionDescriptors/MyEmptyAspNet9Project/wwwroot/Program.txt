@@ -1,0 +1,60 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
+using System.Web.Http;
+using System.Web.Http.Controllers;
+using System.Web.Http.Dispatcher;
+
+using WebApi.Models;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers()
+    .AddXmlSerializerFormatters()
+    ;
+
+// Register an initial service implementation
+//builder.Services.AddScoped<IMyService, MyService>();
+
+// Replace the service with a different implementation
+//builder.Services.Replace(ServiceDescriptor.Scoped<IMyService, AnotherMyService>());
+
+//var x0 = builder.Services.FirstOrDefault(s => s.ServiceType == typeof(IHttpControllerSelector));
+//var x1 = builder.Services.Where(s => s.ServiceType == typeof(IHttpControllerSelector)).ToList();
+
+//builder.Services.AddSingleton<IHttpControllerSelector, DefaultHttpControllerSelector>();
+var x2 = builder.Services.Where(s => s.ServiceType == typeof(IHttpControllerSelector)).ToList();
+var config = builder.Configuration.Get<HttpConfiguration>();
+config ??= new HttpConfiguration();
+// Register the IHttpControllerSelector service with a custom implementation
+builder.Services.Replace(new ServiceDescriptor(
+    typeof(IHttpControllerSelector),
+    sp => new Something(config),
+    ServiceLifetime.Singleton
+));
+//builder.Services.AddSingleton<IHttpControllerSelector, MyControllerSelector>();
+var x3 = builder.Services.Where(s => s.ServiceType == typeof(IHttpControllerSelector)).ToList();
+//builder.Services.Replace(ServiceDescriptor.Scoped<IHttpControllerSelector, Something>());
+
+// Replace the service with a different implementation
+/builder.Services.TryAddSingleton<IHttpControllerSelector>(new Something(config));
+//.AddSingleton<IServiceProviderFactory<IServiceCollection>, DefaultServiceProviderFactory>();
+
+var app = builder.Build();
+
+app.UseRouting();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+        );
+});
+
+var x4 = builder.Services.Where(s => s.ServiceType == typeof(IHttpControllerSelector)).ToList();
+
+var config2 = app.Services.GetService<HttpConfiguration>();
+var y1 = app.Services.GetService<IHttpControllerSelector>();
+
+app.Run();

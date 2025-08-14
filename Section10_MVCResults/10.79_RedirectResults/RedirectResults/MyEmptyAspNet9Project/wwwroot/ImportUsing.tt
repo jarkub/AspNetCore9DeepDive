@@ -1,0 +1,77 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.IO" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ assembly name="EnvDTE" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ output extension=".txt" #>
+<# /* 
+This is a 
+block comment
+ */ #>
+<# // Hello this is a comment #>
+<#
+   #if false
+   foreach(var typeName in typeNames)
+   { 
+       var className = typeName + "Adapter";
+#>
+    // ...
+<#  
+    }
+    #endif
+#>
+<# // \<# my control code \#> #>
+<# 
+    //string filename = "MyEmptyAspNet9Project\\wwwroot\\readme.txt";
+    string filename = this.Host.ResolvePath("readme.txt");
+    var lines = File.ReadLines(filename);
+#>
+Number of lines: <#= lines.Count() #>
+<# 
+
+    foreach (string line in lines) 
+    { 
+#>
+"<#=     line #>"
+<# 
+    } 
+#>
+
+<#
+int top = lines.Count();
+string[] linesArr = lines.ToArray();
+
+for (int i = 0; i<top; i++)
+{ 
+#>
+Line <#= i #>: <#= linesArr[i] #>   
+<# 
+} 
+#>
+
+<#+
+class MyClass : TextTransformation
+{
+    public override string TransformText()
+    {
+#>
+
+module Module2
+
+<#+ for (int i = 0; i < 10; i++) { #>
+<#= i #>
+<#+ } #>
+
+<#+
+        return this.GenerationEnvironment.ToString();
+    }
+}
+
+#>
+
+
+<#+ // End of code #>

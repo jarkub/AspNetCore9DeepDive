@@ -1,0 +1,20 @@
+[Route("/download_vf")]
+public IActionResult ReturnVirtualFile()
+{
+    // The file has to exist in the wwwroot folder
+    return File("/readme.txt", "text/plain");
+}
+
+[Route("/download_pf")]
+public IActionResult ReturnPhysicalFile()
+{
+    return PhysicalFile(@"c:\temp\sample.pdf", "application/pdf");
+}
+
+[Route("/download_cf")]
+public IActionResult ReturnContentFile()
+{
+    byte[] bytes = System.IO.File.ReadAllBytes(@"c:\temp\sample.pdf");
+
+    return File(bytes, "application/pdf");
+}

@@ -1,0 +1,41 @@
+﻿Error("An error message");
+
+Number of projects in this VS solution:  2
+
+
+This is readme.txt contents using the include directive.
+Hello and
+Welcome to
+MyApp
+
+0, 1, 2, 3, 4 Hello!
+
+Howdy!
+Howdy!
+Howdy!
+Howdy!
+
+5
+
+
+This is hello number 1: Hello!
+This is hello number 2: Hello!
+This is hello number 3: Hello!
+This is hello number 4: Hello!
+
+
+
+Squares:
+    The square of 0 is 1.
+    The square of 1 is 4.
+    The square of 2 is 9.
+    The square of 3 is 16.
+That is the end of the list.
+
+List of Squares:
+   The square of 0 is 0.
+   The square of 1 is 1.
+   The square of 2 is 4.
+   The square of 3 is 9.
+End of list.
+
