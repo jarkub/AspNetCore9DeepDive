@@ -1,0 +1,54 @@
+﻿@using WebApp.Controllers
+@using WebApp.Models
+@model HomeController
+
+@{
+    var days = new DateTime(DateTime.Today.Year, 12, 25) - DateTime.Today;
+
+    if (DateTime.Today > new DateTime(DateTime.Today.Year, 12, 25))
+    {
+        days = new DateTime(DateTime.Today.Year + 1, 12, 25) - DateTime.Today;
+    }
+
+    string color = days.Days % 2 == 0 ? "green" : "red";
+}
+<html>
+<head>
+    <title>Home page</title>
+</head>
+<body>
+    <div>ViewData["Message1"] is: <i>@ViewData["Message1"]</i></div>
+    <div>ViewBag.Message2 is: <i>@ViewBag.message2</i></div>
+    <br />
+    <div>ViewData Type is: <b>@ViewData.GetType()</b></div>
+    <div>ViewBag source is: <b>ViewDataDictionary@("<Model.Type>") Microsoft.AspNetCore.Mvc.Razor.RazorPage@("<Model.Type>").ViewData { get; }</b></div>
+    <br />
+    <div>ViewBag Type is: <b>@ViewBag.GetType()</b></div>
+    <div>ViewBag source is: <b>dynamic Microsoft.AspNetCore.Mvc.Razor.RazorPageBase.ViewBag { get; }</b></div>
+    <br />
+    <div>this Type is : <b>@this.GetType()</b></div>
+    <div>Model Type is : <b>@Model.GetType()</b></div>
+
+    @if(days.Days <= 10)
+    {
+        <h1>Christmas is around the corner! b</h1>
+        <text>Happy Holidays</text>
+    }
+    else{
+        switch(color){
+            case "green":
+                <h1 style="color:green">Welcome home!</h1>
+                break;
+            case "red":
+                <h1 style="color:red">Welcome home!</h1>
+                break;
+        }
+
+        @: Days before Christmas @days.Days
+        <br />
+        @days.Days @: Days before Christmas
+        <text><br />Happy Holidays</text>
+    }    
+        
+    </body>
+</html>

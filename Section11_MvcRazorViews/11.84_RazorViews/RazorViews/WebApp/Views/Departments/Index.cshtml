@@ -1,0 +1,62 @@
+﻿@using System.Text
+@using WebApp.Models
+@model List<Department>
+@RenderCount.Increment()
+
+@{
+    var depts = string.Join("", Model.Select(x => $@"
+    <li>
+        <a href='/departments/details/{x.Id}'>{x.Name} ({x.Description})</a>
+    </li>
+    "));
+}
+
+@{
+var html = $@"
+                    <h1>Departments</h1>
+                    <ul>
+                        {
+                            depts
+                        }
+                    </ul>
+                    <br/>
+                    <a href='/departments/create'>Add Department</a>
+                ";
+
+    
+}
+
+
+    @Html.Raw(@Document.Render(html))
+
+
+
+
+
+@* @using System.Text *@
+@* @model List<AspNetCoreGeneratedDocument.Views_Departments_Index> *@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@*
+    var thang = new AspNetCoreGeneratedDocument.Views_Departments_Index();
+    bool isMatch = Model[0] == thang;
+    bool isSame = this == thang;
+
+    StringBuilder sb = new();
+    sb.AppendLine("\n");
+    sb.AppendLine($"isMatch: {isMatch}\n");
+    sb.AppendLine($"isSame: {isSame}\n");
+    sb.AppendLine($"Same Type: {Model[0].GetType() == thang.GetType()}\n");
+    sb.AppendLine($"Same Type: {this.GetType() == thang.GetType()}\n");
+
+    @:The results are @sb.ToString();
+*@
+@* <h2>Welcome to department management.</h2> *@
+
+@* @foreach (var thing in Model)
+{
+    <div>
+        <h3>@thing</h3>
+    </div>
+} *@

@@ -1,0 +1,24 @@
+﻿@using System.Text
+@using WebApp.Models
+@model Department
+
+
+
+<html><body>
+@RenderCount.Increment()
+
+<h1>Department Details</h1>
+<form method='post' action='/departments/edit'>
+    <input type='hidden' name='Id' value='@Model.Id' />
+    <label>Name: <input type='text' name='Name' value='@Model.Name' /></label><br />
+    <label>Description: <input type='text' name='Description' value='@Model.Description' /></label><br />
+    <br />
+    <a href='/departments'>Cancel</a>
+    <button type='submit'>Update</button>
+</form>
+
+<form method='post' action='/departments/delete/@Model.Id'>
+    <button type='submit' style='background-color:red;color:white'>Delete</button>
+</form>
+</body>
+</html>

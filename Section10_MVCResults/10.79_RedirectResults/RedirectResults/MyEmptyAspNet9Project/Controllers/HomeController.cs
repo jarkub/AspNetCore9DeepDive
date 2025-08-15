@@ -85,36 +85,20 @@ $"""
         <a href="/Home/Index">Home</a>
     </li>
     <li>
-        <a href="/JsonResults/Index">JsonResultsController</a>
+        <a href="/Redirect/Index">RedirectController</a>
         <ul>
-            
-            <li><a href="/JsonResults/GetAnonymousObjectById/1">GetAnonymousObjectById/1</a></li>
-            <li><a href="/JsonResults/GetJsonObjectById/1">GetJsonObjectById/1</a></li>
-            <li><a href="/JsonResults/GetJsonResultById/1">GetJsonResultById/1</a></li>
-            <li><a href="/JsonResults/GetIActResJsonById/1">GetIActResJsonById/1</a></li>
+            <li><a href="/Redirect/RedirectToActionResult/1">RedirectToActionResult/1</a></li>
+            <li><a href="/Redirect/LocalRedirectResult/1">LocalRedirectResult/1</a></li>
+            <li><a href="/Redirect/RedirectResult/1">RedirectResult/1</a></li>
+            <li><a href="/Redirect/PermanentRedirect/1">PermanentRedirect/1</a></li>
+            <li><a href="/Redirect/TemporaryRedirect/1">TemporaryRedirect/1</a></li>
+            <li><a href="/Redirect/LocalRedirect/1">LocalRedirect/1</a></li>
         </ul>
     </li>
     <li>
-        <a href="/FileResults/Index">FileResultsController</a>
+        <a href="/Employees/Index">EmployeesController</a>
         <ul>
-            <li><a href="/download_vf">ReturnVirtualFile</a></li>
-            <li><a href="/download_pf">ReturnPhysicalFile</a></li>
-            <li><a href="/download_cf">ReturnContentFile</a></li>
-            <li><a href="/download_file">DownloadFile</a></li>
-            <li><a href="/download_file/file.txt">DownloadTextFile</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="/ContentResults/Index">ContentResultsController</a>
-        <ul>
-            <li><a href="/ContentResults/TextPlain">TextPlain</a></li>
-            <li><a href="/ContentResults/TextHtml">TextHtml</a></li>
-        </ul
-    </li>
-    <li>
-        <a href="/">StaticFiles</a>
-        <ul>
-            {linksToStaticFiles.ToString()}
+            <li><a href="/Employees/GetEmployeesByDepartment/1">GetEmployeesByDepartment/1</a></li>
         </ul>
     </li>
 </ul>

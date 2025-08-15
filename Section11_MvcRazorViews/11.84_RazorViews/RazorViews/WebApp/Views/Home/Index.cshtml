@@ -1,0 +1,66 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+<body>
+    <h2>Welcome to department management.</h2>
+    <a href="/Departments">Go to Departments</a>
+    <h3>Razor Expressions</h3>
+    <p>A Razor expression begins with an at symbol: &#64;</p>
+    <p>The @@ symbol can be escaped by</p>
+    <ul>
+        <li> using two &#64;&#64; like so @@</li>
+        <li>using &#64;Html.Raw("&#64;") like so @Html.Raw("@")</li>
+        <li>Using an explicit Razor expressions &#64;("&#64;") like so @("@")</li>
+    </ul>
+    <h4>Implicit Razor Expressions</h4>
+    <p>An implicit razor expression cannot contain whitespace</p>
+    <p>
+        So @@DateTime.Now works @DateTime.Now
+        <br />
+        But this doesn't @@new DateTime()
+    </p>
+    <h4>Explicit Razor Expressions</h4>
+    <p>An explicit Razor expression wraps the C# expression in parentheses and therefore can contain whitespace</p>
+    <p>@@(new DateTime()) is valid @(new DateTime())</p>
+    <h4>Razor Code Blocks</h4>
+    @{
+        @:Hello, World<br>
+        <text>Hello back</text><br />
+        @: @Html.Raw("Hello")
+
+        var xmas = new DateTime(DateTime.Today.Year, 12, 25);
+        if (DateTime.Today > xmas) xmas = xmas.AddYears(1);
+        var daysUntilXmas = (xmas - DateTime.Now).Days;
+        var color = daysUntilXmas % 2 == 0 ? "green" : "red";
+    }
+    <p style="color: @(daysUntilXmas % 2 == 0 ? "red": "green")">Days Until Xmas: @daysUntilXmas</p>
+    @if (daysUntilXmas < 10)
+    {
+        <h1 style="color: @color">Santa is coming!</h1>
+    }
+    else
+    {
+        <h1 style="color: @color">He's still checking his list. There's still time to get yourself off the naughty list!</h1>
+        // Inside a code block you are writing C# until you write html which breaks the flow of C#. 
+        // You have to use the @ inside html to use C#
+        <span>DateTime.Now </span> <span>@DateTime.Now</span>
+    }
+
+    @switch(color)
+    {
+        case "red":
+            <h3 style="color: @color">The color is RED</h3>
+            break;
+        case "green":
+            <h3 style="color: @color">The color is GREEN</h3>
+            break;
+        default:
+            <h3 style="color: @color">I don't know what the color is</h3>
+            break;
+    }
+
+</body>
+</html>

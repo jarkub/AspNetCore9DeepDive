@@ -1,0 +1,40 @@
+﻿@using WebApp.Models
+
+@{
+    var days = new DateTime(DateTime.Today.Year, 12, 25) - DateTime.Today;
+
+    if (DateTime.Today > new DateTime(DateTime.Today.Year, 12, 25))
+    {
+        days = new DateTime(DateTime.Today.Year + 1, 12, 25) - DateTime.Today;
+    }
+
+    string color = days.Days % 2 == 0 ? "green" : "red";
+}
+<html>
+<head>
+    <title>Home page</title>
+</head>
+<body>
+    @if(days.Days <= 10)
+    {
+        <h1>Christmas is around the corner! b</h1>
+        <text>Happy Holidays</text>
+    }
+    else{
+        switch(color){
+            case "green":
+                <h1 style="color:green">Welcome home!</h1>
+                break;
+            case "red":
+                <h1 style="color:red">Welcome home!</h1>
+                break;
+        }
+
+        @: Days before Christmas @days.Days
+        <br />
+        @days.Days @: Days before Christmas
+        <text><br />Happy Holidays</text>
+    }    
+        
+    </body>
+</html>

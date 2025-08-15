@@ -15,11 +15,11 @@ namespace WebApp.Controllers
         */
         public IActionResult RedirectToActionResult(int? id)
         {
-            string action = nameof(EmployeesController.GetEmployeesByDepartment);
+            string actionName = nameof(EmployeesController.GetEmployeesByDepartment);
             string controllerName = nameof(EmployeesController).Replace("Controller", string.Empty);
             // Temporary redirect (302)
             // Location header = /Employees/GetEmployeesByDepartment/{id}
-            return new RedirectToActionResult(action, controllerName, new { id = id });
+            return new RedirectToActionResult(actionName, controllerName, new { id = id });
         }
 
         /*
@@ -56,6 +56,13 @@ namespace WebApp.Controllers
         {
             // Temporary redirect (302)
             return Redirect("https://www.google.com");
+        }
+        public IActionResult LocalRedirect(int? id)
+        {
+            string actionName = nameof(EmployeesController.GetEmployeesByDepartment);
+            string controllerName = nameof(EmployeesController).Replace("Controller", string.Empty);
+            // Temporary redirect (302)
+            return LocalRedirect($"/{controllerName}/{actionName}/{id}");
         }
     }
 }
