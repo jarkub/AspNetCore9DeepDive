@@ -1,0 +1,24 @@
+﻿<style>
+    .dashed-line {
+        border: none; /* Remove default border */
+        border-top: 1px dashed #333; /* Set a dashed top border */
+        color: #333; /* Fallback for older browsers (not always necessary) */
+        background-color: transparent; /* Ensure no background interferes with dashes */
+        height: 1px; /* Set height to control the thickness of the line */
+    }
+</style>
+
+<hr class="dashed-line" />
+<div>
+    Root _ViewStart BEFORE Layout: @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff")
+</div>
+@{
+    @:Root _ViewStart Block START: @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff")
+    @: <br />
+    Layout = "_Layout";
+    @:Root _ViewStart Block END: @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff")
+}
+<div>
+    Root _ViewStart AFTER Layout: @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff")
+</div>
+<hr />

@@ -1,0 +1,15 @@
+﻿<hr class="dashed-line" />
+<div>
+    Home _ViewStart BEFORE Layout: @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff")
+</div>
+@{
+    @:Home _ViewStart Block START: @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff")
+    @:
+    <br />
+    Layout = "_Layout";
+    @:Home _ViewStart Block END: @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff")
+}
+<div>
+    Home _ViewStart AFTER Layout: @DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffffff")
+</div>
+<hr />

@@ -1,0 +1,13 @@
+﻿@using WebApp
+@{
+    @: "Department Layout Block1"
+
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+@Html.Raw("<h1>Department Layout h1 1</h1>")
+<br /> 
+@RenderBody()
+@Html.Raw("<h1>Department Layout h1 2</h1>")
+@{
+    @: "Department Layout Block2"
+}
