@@ -1,0 +1,14 @@
+﻿@model List<Department>
+
+@{
+    ViewBag.Title = "Departments";
+}
+
+@section title_section {
+    <h3>Departments</h3>
+}
+
+@await Html.PartialAsync("_DepartmentList", Model)
+
+<br />
+<a class="btn btn-primary" href='/departments/create'>Add</a>

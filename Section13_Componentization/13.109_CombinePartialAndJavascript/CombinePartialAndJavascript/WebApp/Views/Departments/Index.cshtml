@@ -1,0 +1,53 @@
+﻿@model List<Department>
+
+@{
+    ViewBag.Title = "Departments";
+}
+
+@section title_section {
+    <h3>Departments</h3>
+}
+
+@await Html.PartialAsync("_SearchBar")
+
+<table class="table table-striped">
+    <thread>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thread>
+    <tbody id="department-list">
+            @await Html.PartialAsync("_DepartmentList", @Model)
+    </tbody>
+</table>
+
+
+<br />
+<a class="btn btn-primary" href='/departments/create'>Add</a>
+
+<script>
+
+    document.querySelector("#search-button").addEventListener("click", async () => {
+        var filter = document.querySelector("#search-filter").value;
+        //debugger;
+        var response = await fetch(`/department-list/${filter}`);
+        //debugger;
+        var departmentsHTML = await response.text();
+        //debugger;
+
+        document.querySelector("#department-list").innerHTML = departmentsHTML;
+    });
+
+    document.querySelector("#clear-search-button").addEventListener("click", async () => {
+        document.querySelector("#search-filter").value = '';
+        //debugger;
+        await document.querySelector("#search-button").click();
+        //debugger;
+    });
+
+</script>
+
+
+
