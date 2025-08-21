@@ -1,0 +1,12 @@
+﻿@page
+@model WebApp.Pages.IndexModel
+@{
+    Console.WriteLine("Users page loaded.");
+}
+<h3>Hello world!</h3>
+<br />
+<a href="/Employees">Employees</a>
+<br />
+<a href="/Employees/Edit/456">Edit</a>
+
+@await Component.InvokeAsync(nameof(WebApp.Pages.Shared.Components.MyViewComponent.MyViewComponent), new { message = "Index message" })

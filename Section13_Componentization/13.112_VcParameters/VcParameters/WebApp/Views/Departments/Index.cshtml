@@ -18,7 +18,7 @@
         </tr>
     </thread>
     <tbody id="department-list">
-        @await Component.InvokeAsync("DepartmentList", new { filter="eng"})
+        @await Component.InvokeAsync("DepartmentList")
     </tbody>
 </table>
 
@@ -36,7 +36,7 @@
 
         document.querySelector("#department-list").innerHTML = departmentsHTML;
     });
-
+    document.querySelector("#search-button").click();
 </script>
 
 

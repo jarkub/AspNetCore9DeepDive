@@ -1,0 +1,43 @@
+﻿@page "{id:int?}"
+
+@model WebApp.Pages.EmployeesModel
+
+<h3>Employee detail</h3>
+
+
+@if (Model is not null &&
+   Model.InputModel is not null &&
+   Model.InputModel.ErrorMessages is not null)
+{
+    <ul style="color:red">
+        @foreach (var errorMessage in Model.InputModel.ErrorMessages)
+        {
+            <li>@errorMessage</li>
+        }
+    </ul>
+}
+
+Employee Id: @Model.Id
+
+<br/>
+
+<form method="post" action="/employees/edit/@Model.Id?handler=save">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="inputmodel.id" value="@Model.Id" />
+    Name:
+    <input type="text" name="inputmodel.name" value="@Model.InputModel?.Name" />
+
+    <button type="submit">Save</button>
+
+</form>
+
+<br />
+<form method="post" action="/employees/edit/@Model.Id?handler=delete">
+    @Html.AntiForgeryToken()
+    <button type="submit">Delete</button>
+</form>
+
+
+@section messagebar {
+    <p>This is an edit message.</p>
+}

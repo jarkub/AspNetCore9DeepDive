@@ -1,0 +1,17 @@
+﻿@page 
+
+@model WebApp.Pages.Employees.AddModel
+@{
+    var dispName = ViewContext.ActionDescriptor.DisplayName;
+    Console.WriteLine(dispName);
+    Console.WriteLine(this);
+    Console.WriteLine(Model);
+}
+<html>
+<body>
+    <h1>This is the @dispName Page</h1>
+
+</body>
+</html>
+
+<h3>Add Employee</h3>

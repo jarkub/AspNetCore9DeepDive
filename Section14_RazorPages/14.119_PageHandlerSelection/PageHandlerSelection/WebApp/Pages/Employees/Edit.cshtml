@@ -1,0 +1,54 @@
+﻿@page "{id:int?}"
+
+@model WebApp.Pages.EmployeesModel
+
+@{
+    var dispName = ViewContext.ActionDescriptor.DisplayName;
+    Console.WriteLine(dispName);
+    Console.WriteLine(this);
+    Console.WriteLine(Model);
+}
+<html>
+<body>
+    <h1>This is the @dispName Page</h1>
+    <h2>@Model.Message</h2>
+</body>
+</html>
+
+
+<h3>Employee detail</h3>
+
+Employee Id: @Model.Id
+
+<br/>
+<a href="/employees/edit/11?handler=first">/employees/edit/11?handler=first</a>
+
+<br />
+<a href="/employees/edit?handler=first">/employees/edit?handler=first</a>
+
+<br />
+<a href="/employees/edit/22/first">/employees/edit/22/first</a>
+
+<br />
+<a href="/employees/edit/33/second">/employees/edit/33/second</a>
+
+<br />
+<form method="post" action="/employees/edit/44?handler=save">
+    @* @Html.AntiForgeryToken() *@
+    <input type="hidden" name="id" value="44" />
+
+    <button type="submit">/employees/edit/44?handler=save</button>
+
+</form>
+
+<br />
+<form method="post" action="/employees/edit?handler=delete">
+    @* @Html.AntiForgeryToken() *@
+    <button type="submit">/employees/edit?handler=delete</button>
+</form>
+
+<br/>
+<form method="post" action="/employees/edit/55?handler=delete">
+    @Html.AntiForgeryToken()
+    <button type="submit">/employees/edit/55?handler=delete</button>
+</form>

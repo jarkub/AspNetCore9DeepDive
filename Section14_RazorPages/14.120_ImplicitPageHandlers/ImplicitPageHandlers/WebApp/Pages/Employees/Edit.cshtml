@@ -1,0 +1,36 @@
+﻿@page "{id:int?}"
+
+@model WebApp.Pages.EmployeesModel
+
+@{
+    //System.Diagnostics.Debugger.Break();
+    var req = HttpContext.Request;
+    var msg = $"{req.Method} {req.Scheme}://{req.Host}{req.Path}{req.QueryString}";
+}
+
+<h3>Employee detail</h3>
+
+Employee Id: @Model.Id
+<div>
+    @msg
+</div>
+<br/>
+<form method="post" action="/employees/edit/@Model.Id?handler=save">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" value="@Model.Id" />
+
+    <button type="submit">Save</button>
+
+</form>
+
+<br/>
+<form method="post" action="/employees/edit/@Model.Id?handler=delete">
+    @Html.AntiForgeryToken()
+    <button type="submit">Delete</button>
+</form>
+
+<br />
+<form method="post" action="/employees/edit/@Model.Id?handler=delete1">
+    @Html.AntiForgeryToken()
+    <button type="submit">Delete1</button>
+</form>

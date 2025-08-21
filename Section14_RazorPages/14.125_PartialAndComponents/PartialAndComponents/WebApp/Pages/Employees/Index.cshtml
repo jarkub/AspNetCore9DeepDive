@@ -1,0 +1,18 @@
+﻿@page
+@model WebApp.Pages.Employees.IndexModel
+@{
+    string name1 = nameof(WebApp.Pages.Shared.Components.MyViewComponent.MyViewComponent);
+    Console.WriteLine(name1);
+    string[] employeeNames = [ "Bob", "Brenda", "Bill" ];
+}
+<h3>Employees</h3>
+
+@await Component.InvokeAsync(nameof(WebApp.Pages.Shared.Components.MyViewComponent.MyViewComponent), new { message = "Index message" })
+@foreach (string emp in employeeNames)
+{
+    @await Component.InvokeAsync(name1, new { message = emp })
+}
+
+@section messagebar {
+    <p>This is an default message.</p>
+}

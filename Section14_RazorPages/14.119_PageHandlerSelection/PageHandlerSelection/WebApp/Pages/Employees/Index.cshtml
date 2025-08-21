@@ -1,0 +1,20 @@
+﻿@page
+@model WebApp.Pages.Employees.IndexModel
+@{
+    var dispName = ViewContext.ActionDescriptor.DisplayName;
+    Console.WriteLine(dispName);
+    Console.WriteLine(this);
+    Console.WriteLine(Model);
+}
+<html>
+<body>
+    <h1>This is the @dispName Page</h1>
+    <br />
+    <a href="Employees/Add">Add Employees</a>
+    <br />
+    <a href="Employees/Edit/31">Edit Employees</a>
+</body>
+</html>
+
+
+<h3>Employees</h3>
