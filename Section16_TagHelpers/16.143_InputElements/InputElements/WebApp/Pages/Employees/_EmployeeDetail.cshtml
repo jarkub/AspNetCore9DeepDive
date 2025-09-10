@@ -1,0 +1,103 @@
+﻿@model EmployeeViewModel
+@if (Model is not null && Model.Employee is not null)
+{
+    <form method="post">
+
+        @* <form> tag helper includes token *@
+        @* @Html.AntiForgeryToken() *@
+
+        @if (ViewBag.Action == "edit")
+        {
+            <input asp-for="Employee.Id" />
+        }
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="row mb-3">
+            <div class="col-2">
+                <label asp-for="Employee.Name" class="col-form-label" ></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Employee.Name" class="form-control" />
+                <span class="text-danger" asp-validation-for="Employee.Name"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-2">
+                <label asp-for="Employee.Position" class="col-form-label"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Employee.Position" class="form-control" />
+                <span class="text-danger" asp-validation-for="Employee.Position"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-2">
+                <label asp-for="Employee.Salary" class="col-form-label"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Employee.Salary" class="form-control" />
+                <span class="text-danger" asp-validation-for="Employee.Salary"></span>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-2">
+                <label asp-for="Employee.DepartmentId" class="col-form-label"></label>
+            </div>
+            <div class="col-6">
+                <select asp-for="Employee.DepartmentId" class="form-control"
+                    asp-items='Model.Departments?.Select(x => new SelectListItem() {
+                        Text = x.Name,
+                        Value = x.Id.ToString(),
+                        Selected=(ViewBag.Action == "edit" && x.Id == Model.Employee.DepartmentId)
+                        })'>
+
+                    @if (Model.Departments is not null)
+                    {
+                        @if (ViewBag.Action == "create")
+                        {
+                            <option selected value="0">-- Please Select --</option>
+                        }
+                        else
+                        {
+                            <option value="0">-- Please Select --</option>
+                        }
+
+                        @* foreach (var department in Model.Departments)
+                        {
+                            if (ViewBag.Action == "edit")
+                            {
+                                if (department.Id == Model.Employee.DepartmentId)
+                                {
+                                    <option selected value="@department.Id">@department.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@department.Id">@department.Name</option>
+                                }
+                            }
+                            else
+                            {
+                                <option value="@department.Id">@department.Name</option>
+                            }
+
+                        } *@
+                    }
+
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-2">
+                <button type='submit' class="btn btn-primary">Save</button>
+                &nbsp;&nbsp;
+                <a href="/employees" class="btn btn-primary">Cancel</a>
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+    </form>
+}
